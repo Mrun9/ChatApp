@@ -62,7 +62,7 @@ td:nth-child(even) {
                             $receiver_id=$_SESSION['uid'];
                         }
                         
-                        $query=" select DISTINCT request.sender_id ,user.username,request.status from user inner join request on request.sender_id=uid where reciever_id=:receiver_id";
+                        $query=" select DISTINCT request.sender_id ,user.username,request.status from user inner join request on request.sender_id=uid where reciever_id=:receiver_id and status='pending'";
                         $stmt = $conn->prepare($query);
                         $stmt->execute([':receiver_id'=>$receiver_id]);
                         //echo "query executed";
